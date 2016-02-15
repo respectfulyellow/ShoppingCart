@@ -11,7 +11,16 @@ namespace ShoppingCart.UnitTests
         public void WhenHasNoItems_Should_Return_0()
         {
             var discountedItemPricer = new DiscountedItemPricer('A', 50, 2, 130);
-            discountedItemPricer.Price.Should().Be(0);
+            discountedItemPricer.TotalPrice.Should().Be(0);
         }
+
+        [Test]
+        public void WhenHas_OneItem_AndQuantityDiscountGreaterThanOne_TotalPrice_Should_PriceForOne()
+        {
+            var discountedItemPricer = new DiscountedItemPricer('A', 50, 5, 130);
+            discountedItemPricer.AddItem();
+            discountedItemPricer.TotalPrice.Should().Be(50);
+        }
+
     }
 }
