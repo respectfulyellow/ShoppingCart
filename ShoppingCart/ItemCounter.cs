@@ -6,12 +6,12 @@ namespace ShoppingCart
 {
     public class ItemCounter
     {
-        private readonly List<ItemCount> _items;
-        public IEnumerable<ItemCount> Values => _items;
+        private readonly IDictionary<char, int> _items;
+        public IEnumerable<ItemCount> Values => _items.Select(i => new ItemCount(i.Key, i.Value));
 
         public ItemCounter()
         {
-            _items = new List<ItemCount>();
+            _items = new Dictionary<char, int>();
         }
 
         public void AddItems(string skus)
@@ -24,14 +24,14 @@ namespace ShoppingCart
 
         private void AddItem(char sku)
         {
-            var item = _items.SingleOrDefault(s => s.Sku == sku);
-            if (item != null)
+            int count;
+            if (_items.TryGetValue(sku, out count))
             {
-                item.Count++;
+                _items[sku]++;
             }
             else
             {
-                _items.Add(new ItemCount(sku, 1));
+                _items[sku] = 1;
             }
         }
     }
