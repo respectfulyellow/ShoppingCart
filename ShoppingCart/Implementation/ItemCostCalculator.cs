@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
 using System.Linq;
-using ShoppingCart.Pricers;
 
-namespace ShoppingCart
+namespace ShoppingCart.Implementation
 {
     public class ItemCostCalculator : IItemCostCalculator
     {

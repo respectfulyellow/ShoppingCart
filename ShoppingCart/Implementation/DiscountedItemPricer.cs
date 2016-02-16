@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Pricers
+﻿namespace ShoppingCart.Implementation
 {
     public class DiscountedItemPricer : IPricer
     {

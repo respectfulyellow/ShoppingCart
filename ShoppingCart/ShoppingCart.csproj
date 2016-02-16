@@ -41,14 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IItemCostCalculator.cs" />
-    <Compile Include="ItemCostCalculator.cs" />
-    <Compile Include="TotalCostCalculator.cs" />
-    <Compile Include="ItemCounter\IItemCounter.cs" />
-    <Compile Include="ItemCounter\ItemCount.cs" />
-    <Compile Include="ItemCounter\ItemCounter.cs" />
-    <Compile Include="Pricers\DiscountedItemPricer.cs" />
-    <Compile Include="Pricers\IPricer.cs" />
-    <Compile Include="Pricers\NonDiscountedPricer.cs" />
+    <Compile Include="IItemCounter.cs" />
+    <Compile Include="Implementation\DiscountedItemPricer.cs" />
+    <Compile Include="Implementation\ItemCostCalculator.cs" />
+    <Compile Include="Implementation\ItemCount.cs" />
+    <Compile Include="Implementation\ItemCounter.cs" />
+    <Compile Include="Implementation\NonDiscountedPricer.cs" />
+    <Compile Include="Implementation\TotalCostCalculator.cs" />
+    <Compile Include="IPricer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

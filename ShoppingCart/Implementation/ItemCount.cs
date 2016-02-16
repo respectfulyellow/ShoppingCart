@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.ItemCounter
+﻿namespace ShoppingCart.Implementation
 {
     public class ItemCount
     {

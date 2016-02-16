@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ShoppingCart.ItemCounter
+namespace ShoppingCart.Implementation
 {
     public class ItemCounter : IItemCounter
     {

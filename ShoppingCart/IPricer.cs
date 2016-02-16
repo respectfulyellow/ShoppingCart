@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Pricers
+﻿namespace ShoppingCart
 {
     public interface IPricer
     {

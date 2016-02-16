@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using ShoppingCart.Implementation;
 
-namespace ShoppingCart.ItemCounter
+namespace ShoppingCart
 {
     public interface IItemCounter
     {

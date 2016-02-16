@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
-using ShoppingCart.Pricers;
+using ShoppingCart.Implementation;
 using Telerik.JustMock;
 using Telerik.JustMock.Helpers;
 

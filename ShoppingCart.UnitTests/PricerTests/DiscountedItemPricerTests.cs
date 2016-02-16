@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using ShoppingCart.Pricers;
+using ShoppingCart.Implementation;
 
 namespace ShoppingCart.UnitTests.PricerTests
 {

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
-using ShoppingCart.ItemCounter;
 
-namespace ShoppingCart
+namespace ShoppingCart.Implementation
 {
     public class TotalCostCalculator
     {
