@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
+using ShoppingCart.ItemCounter;
 
 namespace ShoppingCart.UnitTests
 {
@@ -10,14 +11,14 @@ namespace ShoppingCart.UnitTests
         [Test]
         public void When_No_Items_Values_Should_Be_Empty()
         {
-            var itemCounter = new ItemCounter();
+            var itemCounter = new ItemCounter.ItemCounter();
             itemCounter.Values.Should().BeEmpty();
         }
 
         [Test]
         public void WhenAddOneItem_Values_Should_Contain_Item_With_Sku_And_CountOfOne()
         {
-            var itemCounter =new ItemCounter();
+            var itemCounter =new ItemCounter.ItemCounter();
 
             itemCounter.AddItems("A");
 
@@ -28,7 +29,7 @@ namespace ShoppingCart.UnitTests
         [Test]
         public void WhenAddTwoSameItem_Values_Should_Contain_Item_With_Sku_And_CountOfTwo()
         {
-            var itemCounter = new ItemCounter();
+            var itemCounter = new ItemCounter.ItemCounter();
 
             itemCounter.AddItems("AA");
 
@@ -39,7 +40,7 @@ namespace ShoppingCart.UnitTests
         [Test]
         public void WhenAddTwoDifferentItem_Values_Should_Contain_BothSkusWithCountOfOne()
         {
-            var itemCounter = new ItemCounter();
+            var itemCounter = new ItemCounter.ItemCounter();
 
             itemCounter.AddItems("AB");
 

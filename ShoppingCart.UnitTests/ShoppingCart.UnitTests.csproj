@@ -50,8 +50,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.JustMock, Version=2016.1.107.7, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\JustMock.2016.1.107.7\lib\Net35\Telerik.JustMock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckoutTests.cs" />
     <Compile Include="ItemCounterTests.cs" />
     <Compile Include="PricerTests\DiscountedItemPricerTests.cs" />
     <Compile Include="PricerTests\NonDiscountedPricerTests.cs" />

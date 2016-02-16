@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart
+﻿namespace ShoppingCart.ItemCounter
 {
     public class ItemCount
     {

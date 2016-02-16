@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemCount.cs" />
-    <Compile Include="ItemCounter.cs" />
+    <Compile Include="PriceCalculator.cs" />
+    <Compile Include="ItemCounter\IItemCounter.cs" />
+    <Compile Include="ItemCounter\ItemCount.cs" />
+    <Compile Include="ItemCounter\ItemCounter.cs" />
     <Compile Include="Pricers\DiscountedItemPricer.cs" />
     <Compile Include="Pricers\IPricer.cs" />
     <Compile Include="Pricers\NonDiscountedPricer.cs" />

@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ShoppingCart
+namespace ShoppingCart.ItemCounter
 {
-    public class ItemCounter
+    public class ItemCounter : IItemCounter
     {
         private readonly IDictionary<char, int> _items;
         public IEnumerable<ItemCount> Values => _items.Select(i => new ItemCount(i.Key, i.Value));
