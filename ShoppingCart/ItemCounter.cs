@@ -18,15 +18,20 @@ namespace ShoppingCart
         {
             foreach (var sku in skus)
             {
-                var item = _items.SingleOrDefault(s => s.Sku == sku);
-                if (item != null)
-                {
-                    item.Count++;
-                }
-                else
-                {
-                    _items.Add(new ItemCount(sku, 1));
-                }
+                AddItem(sku);
+            }
+        }
+
+        private void AddItem(char sku)
+        {
+            var item = _items.SingleOrDefault(s => s.Sku == sku);
+            if (item != null)
+            {
+                item.Count++;
+            }
+            else
+            {
+                _items.Add(new ItemCount(sku, 1));
             }
         }
     }
