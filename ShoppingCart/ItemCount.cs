@@ -24,7 +24,7 @@
         }
 
         public char Sku { get; }
-        public int Count { get; }
+        public int Count { get; set; }
 
         public ItemCount(char sku, int count)
         {

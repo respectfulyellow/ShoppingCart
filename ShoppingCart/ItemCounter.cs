@@ -14,9 +14,20 @@ namespace ShoppingCart
             _items = new List<ItemCount>();
         }
 
-        public void AddItems(string s)
+        public void AddItems(string skus)
         {
-            _items.Add(new ItemCount(s[0], 1));
+            foreach (var sku in skus)
+            {
+                var item = _items.SingleOrDefault(s => s.Sku == sku);
+                if (item != null)
+                {
+                    item.Count++;
+                }
+                else
+                {
+                    _items.Add(new ItemCount(sku, 1));
+                }
+            }
         }
     }
 }
