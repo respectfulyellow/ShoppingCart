@@ -44,5 +44,21 @@ namespace ShoppingCart.UnitTests
             discountedItemPricer.TotalPrice(10).Should().Be(260);
         }
 
+        [Test]
+        public void When_HasQuantityDiscountPlusOne_TotalPrice_ShouldBe_DiscountPricePlusPriceForOne()
+        {
+            var discountedItemPricer = new DiscountedItemPricer('A', 50, 5, 130);
+
+            discountedItemPricer.TotalPrice(6).Should().Be(180);
+        }
+
+        [Test]
+        public void When_HasQuantityDiscountPlusOneLessThanQuantityDiscount_TotalPrice_ShouldBe_DiscountPricePlusPriceForOneTimesQuantityDiscountMinusOne()
+        {
+            var discountedItemPricer = new DiscountedItemPricer('A', 50, 5, 130);
+
+            discountedItemPricer.TotalPrice(9).Should().Be(330);
+        }
+
     }
 }
