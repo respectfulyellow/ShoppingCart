@@ -12,7 +12,7 @@ namespace ShoppingCart.UnitTests
         public void When_No_Items_Values_Should_Be_Empty()
         {
             var itemCounter = new ItemCounter.ItemCounter();
-            itemCounter.Values.Should().BeEmpty();
+            itemCounter.CountItems("").Should().BeEmpty();
         }
 
         [Test]
@@ -20,10 +20,10 @@ namespace ShoppingCart.UnitTests
         {
             var itemCounter =new ItemCounter.ItemCounter();
 
-            itemCounter.AddItems("A");
+            var itemCounts = itemCounter.CountItems("A");
 
-            itemCounter.Values.Should().HaveCount(1);
-            itemCounter.Values.Should().Contain(new ItemCount('A', 1));
+            itemCounts.Should().HaveCount(1);
+            itemCounts.Should().Contain(new ItemCount('A', 1));
         }
 
         [Test]
@@ -31,10 +31,10 @@ namespace ShoppingCart.UnitTests
         {
             var itemCounter = new ItemCounter.ItemCounter();
 
-            itemCounter.AddItems("AA");
+            var itemCounts = itemCounter.CountItems("AA");
 
-            itemCounter.Values.Should().HaveCount(1);
-            itemCounter.Values.Should().Contain(new ItemCount('A', 2));
+            itemCounts.Should().HaveCount(1);
+            itemCounts.Should().Contain(new ItemCount('A', 2));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace ShoppingCart.UnitTests
         {
             var itemCounter = new ItemCounter.ItemCounter();
 
-            itemCounter.AddItems("AB");
+            var itemCounts = itemCounter.CountItems("AB");
 
             var expectedResults = new List<ItemCount>
             {
@@ -50,7 +50,7 @@ namespace ShoppingCart.UnitTests
                 new ItemCount('B', 1)
             };
 
-            itemCounter.Values.Should().BeEquivalentTo(expectedResults);
+            itemCounts.Should().BeEquivalentTo(expectedResults);
         }
 
     }

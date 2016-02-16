@@ -1,4 +1,5 @@
-﻿using ShoppingCart.ItemCounter;
+﻿using System.Linq;
+using ShoppingCart.ItemCounter;
 
 namespace ShoppingCart
 {
@@ -15,15 +16,8 @@ namespace ShoppingCart
 
         public int Calculate(string skus)
         {
-            _itemCounter.AddItems(skus);
-            var totalCost = 0;
-            foreach (var itemCount in _itemCounter.Values)
-            {
-                var itemCost = _itemCostCalculator.GetPrice(itemCount.Sku, itemCount.Count);
-                totalCost += itemCost;
-            }
-
-            return totalCost;
+            return _itemCounter.CountItems(skus)
+                .Sum(itemCount => _itemCostCalculator.GetPrice(itemCount.Sku, itemCount.Count));
         }
     }
 }
