@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 using ShoppingCart.ItemCounter;
 using ShoppingCart.Pricers;
@@ -7,52 +8,71 @@ using Telerik.JustMock.Helpers;
 
 namespace ShoppingCart.UnitTests
 {
-    class PriceCalculatorTests
+    class CostCalculatorTests
     {
         private IItemCounter _itemCounter;
-        private IItemPriceCalculator _itemPriceCalculator;
+        private IItemCostCalculator _itemCostCalculator;
 
         [SetUp]
         public void SetUp()
         {
             _itemCounter = Mock.Create<IItemCounter>();
-            _itemPriceCalculator = Mock.Create<IItemPriceCalculator>();
+            _itemCostCalculator = Mock.Create<IItemCostCalculator>();
         }
 
-        public PriceCalculator CreatePriceCalculator()
+        public TotalCostCalculator CreateTotalCostCalculator()
         {
-            var priceCalculator = new PriceCalculator(_itemCounter, _itemPriceCalculator);
-            return priceCalculator;
+            var totalCostCalculator = new TotalCostCalculator(_itemCounter, _itemCostCalculator);
+            return totalCostCalculator;
         }
 
         [Test]
         public void Should_AddItems()
         {
             const string skus = "ABCD";
-            var priceCalculator = CreatePriceCalculator();
+            var totalCostCalculator = CreateTotalCostCalculator();
             _itemCounter.Arrange(i => i.AddItems(skus)).MustBeCalled();
             
-            priceCalculator.Calculate(skus);
+            totalCostCalculator.Calculate(skus);
 
             _itemCounter.Assert();
         }
 
         [Test]
-        public void Should_Call_Pricer_TotalPrice_ForEachItemCount()
+        public void Should_Call_ItemPriceCalculator_GetPrice_ForEachItemCount()
         {
-            var priceCalculator = CreatePriceCalculator();
+            var totalCostCalculator = CreateTotalCostCalculator();
             var itemCounts = new List<ItemCount>
             {
                 new ItemCount('A', 5),
                 new ItemCount('B', 10)
             };
             _itemCounter.Arrange(ic => ic.Values).Returns(itemCounts);
-            _itemPriceCalculator.Arrange(ipc => ipc.GetPrice('A', 5)).MustBeCalled();
-            _itemPriceCalculator.Arrange(ipc => ipc.GetPrice('B', 10)).MustBeCalled();
+            _itemCostCalculator.Arrange(ipc => ipc.GetPrice('A', 5)).MustBeCalled();
+            _itemCostCalculator.Arrange(ipc => ipc.GetPrice('B', 10)).MustBeCalled();
 
-            priceCalculator.Calculate("AB");
+            totalCostCalculator.Calculate("AB");
 
-            _itemPriceCalculator.Assert();
+            _itemCostCalculator.Assert();
         }
+
+        [Test]
+        public void Should_Return_SumOfItemPriceCalculator_GetPrices()
+        {
+            var totalCostCalculator = CreateTotalCostCalculator();
+            var itemCounts = new List<ItemCount>
+            {
+                new ItemCount('A', 5),
+                new ItemCount('B', 10)
+            };
+            _itemCounter.Arrange(ic => ic.Values).Returns(itemCounts);
+            _itemCostCalculator.Arrange(ipc => ipc.GetPrice('A', 5)).Returns(50);
+            _itemCostCalculator.Arrange(ipc => ipc.GetPrice('B', 10)).Returns(75);
+
+            var totalPrice = totalCostCalculator.Calculate("AB");
+
+            totalPrice.Should().Be(125);
+        }
+
     }
 }
