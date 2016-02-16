@@ -3,10 +3,9 @@
     public class DiscountedItemPricer : IPricer
     {
         private char _sku;
-        private int _priceForOne;
-        private int _quantityDiscount;
-        private int _discountPrice;
-        private int _quantityPurchased;
+        private readonly int _priceForOne;
+        private readonly int _quantityDiscount;
+        private readonly int _discountPrice;
 
         public DiscountedItemPricer(char sku, int priceForOne, int quantityDiscount, int discountPrice)
         {
@@ -14,14 +13,10 @@
             _priceForOne = priceForOne;
             _quantityDiscount = quantityDiscount;
             _discountPrice = discountPrice;
-            _quantityPurchased = 0;
         }
 
-        public int TotalPrice => _quantityPurchased*_priceForOne;
-        
-        public void AddItem()
-        {
-            _quantityPurchased++;
-        }
+        public int TotalPrice(int quantityPurchased) => quantityPurchased == _quantityDiscount
+            ? _discountPrice
+            : quantityPurchased*_priceForOne;
     }
 }
