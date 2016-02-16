@@ -22,5 +22,16 @@ namespace ShoppingCart.UnitTests
             discountedItemPricer.TotalPrice.Should().Be(50);
         }
 
+        [Test]
+        public void WhenHas_OneItemLessThanQuantityDiscount_TotalPrice_Should_PriceForOneTimesQuantity()
+        {
+            var discountedItemPricer = new DiscountedItemPricer('A', 50, 5, 130);
+            discountedItemPricer.AddItem();
+            discountedItemPricer.AddItem();
+            discountedItemPricer.AddItem();
+            discountedItemPricer.AddItem();
+            discountedItemPricer.TotalPrice.Should().Be(200);
+        }
+
     }
 }
