@@ -56,7 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckoutTests.cs" />
+    <Compile Include="PriceCalculatorTests.cs" />
     <Compile Include="ItemCounterTests.cs" />
     <Compile Include="PricerTests\DiscountedItemPricerTests.cs" />
     <Compile Include="PricerTests\NonDiscountedPricerTests.cs" />

@@ -5,7 +5,7 @@ using Telerik.JustMock.Helpers;
 
 namespace ShoppingCart.UnitTests
 {
-    class CheckoutTests
+    class PriceCalculatorTests
     {
         [Test]
         public void Should_AddItems()
