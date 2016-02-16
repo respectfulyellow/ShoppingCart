@@ -5,33 +5,20 @@ namespace ShoppingCart.ItemCounter
 {
     public class ItemCounter : IItemCounter
     {
-        private readonly IDictionary<char, int> _items;
-        public IEnumerable<ItemCount> Values => _items.Select(i => new ItemCount(i.Key, i.Value));
+        private string _items;
 
         public ItemCounter()
         {
-            _items = new Dictionary<char, int>();
+            _items = "";
         }
+
+        public IEnumerable<ItemCount> Values => _items.GroupBy(c => c)
+            .Select(g => new ItemCount(g.Key, g.Count()));
 
         public void AddItems(string skus)
         {
-            foreach (var sku in skus)
-            {
-                AddItem(sku);
-            }
+            _items += skus;
         }
 
-        private void AddItem(char sku)
-        {
-            int count;
-            if (_items.TryGetValue(sku, out count))
-            {
-                _items[sku]++;
-            }
-            else
-            {
-                _items[sku] = 1;
-            }
-        }
     }
 }
