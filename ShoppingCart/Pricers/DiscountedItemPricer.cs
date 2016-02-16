@@ -15,8 +15,8 @@
             _discountPrice = discountPrice;
         }
 
-        public int TotalPrice(int quantityPurchased) => quantityPurchased == _quantityDiscount
-            ? _discountPrice
+        public int TotalPrice(int quantityPurchased) => quantityPurchased % _quantityDiscount== 0
+            ? _discountPrice * (quantityPurchased/_quantityDiscount)
             : quantityPurchased*_priceForOne;
     }
 }

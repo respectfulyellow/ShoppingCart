@@ -35,5 +35,14 @@ namespace ShoppingCart.UnitTests
 
             discountedItemPricer.TotalPrice(5).Should().Be(130);
         }
+
+        [Test]
+        public void When_HasTwoTimesQuantityDiscount_TotalPrice_ShouldBe_DiscountPriceTimesTwo()
+        {
+            var discountedItemPricer = new DiscountedItemPricer('A', 50, 5, 130);
+
+            discountedItemPricer.TotalPrice(10).Should().Be(260);
+        }
+
     }
 }
