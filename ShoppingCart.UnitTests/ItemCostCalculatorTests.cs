@@ -21,8 +21,11 @@ namespace ShoppingCart.UnitTests
                 pricer1,
                 pricer2
             };
+            var pricerDataService = Mock.Create<IPricerDataService>();
+            pricerDataService.Arrange(pds => pds.GetPricers())
+                .Returns(pricers);
 
-            var itemCostCalculator = new ItemCostCalculator(pricers);
+            var itemCostCalculator = new ItemCostCalculator(pricerDataService);
             var itemCost = itemCostCalculator.GetPrice('B', quantityPurchased);
 
             itemCost.Should().Be(200);

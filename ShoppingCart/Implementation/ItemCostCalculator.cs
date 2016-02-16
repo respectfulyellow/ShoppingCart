@@ -7,9 +7,9 @@ namespace ShoppingCart.Implementation
     {
         private readonly IDictionary<char, IPricer> _pricers;  
 
-        public ItemCostCalculator(ICollection<IPricer> pricers)
+        public ItemCostCalculator(IPricerDataService pricerDataService)
         {
-            _pricers = pricers.ToDictionary(p => p.Sku);
+            _pricers = pricerDataService.GetPricers().ToDictionary(p => p.Sku);
         }
 
         public int GetPrice(char sku, int quantity)
