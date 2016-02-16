@@ -52,8 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiscountedItemPricerTests.cs" />
-    <Compile Include="NonDiscountedPricerTests.cs" />
+    <Compile Include="ItemCounterTests.cs" />
+    <Compile Include="PricerTests\DiscountedItemPricerTests.cs" />
+    <Compile Include="PricerTests\NonDiscountedPricerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
