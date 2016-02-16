@@ -7,18 +7,36 @@ namespace ShoppingCart.UnitTests
 {
     class PriceCalculatorTests
     {
+        private IItemCounter _itemCounter;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _itemCounter = Mock.Create<IItemCounter>();
+        }
+
+        public PriceCalculator CreatePriceCalculator()
+        {
+            var priceCalculator = new PriceCalculator(_itemCounter);
+            return priceCalculator;
+        }
+
         [Test]
         public void Should_AddItems()
         {
-            var skus = "ABCD";
+            const string skus = "ABCD";
+            var priceCalculator = CreatePriceCalculator();
+            _itemCounter.Arrange(i => i.AddItems(skus)).MustBeCalled();
+            
+            priceCalculator.Calculate(skus);
 
-            var itemCounter = Mock.Create<IItemCounter>();
-            itemCounter.Arrange(i => i.AddItems(skus)).MustBeCalled();
-            var checkout = new PriceCalculator(itemCounter);
+            _itemCounter.Assert();
+        }
 
-            checkout.Calculate(skus);
-
-            itemCounter.Assert();
+        [Test]
+        public void Should_Call_Pricer_TotalPrice_ForItemCount()
+        {
+            
         }
     }
 }
