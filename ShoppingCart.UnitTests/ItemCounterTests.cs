@@ -7,10 +7,21 @@ namespace ShoppingCart.UnitTests
     public class ItemCounterTests
     {
         [Test]
-        public void When_No_Items_Results_Should_Be_Empty()
+        public void When_No_Items_Values_Should_Be_Empty()
         {
             var itemCounter = new ItemCounter();
             itemCounter.Values.Should().BeEmpty();
+        }
+
+        [Test]
+        public void WhenAddOneItem_Values_Should_Contain_Item_With_Sku_And_CountOfOne()
+        {
+            var itemCounter =new ItemCounter();
+
+            itemCounter.AddItems("A");
+
+            itemCounter.Values.Should().HaveCount(1);
+            itemCounter.Values.Should().Contain(new ItemCount('A', 1));
         }
     }
 }
