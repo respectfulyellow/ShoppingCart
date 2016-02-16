@@ -11,7 +11,7 @@
 
         public int TotalPrice(int quantityPurchased)
         {
-            return 0;
+            return quantityPurchased * _price;
         }
     }
 }

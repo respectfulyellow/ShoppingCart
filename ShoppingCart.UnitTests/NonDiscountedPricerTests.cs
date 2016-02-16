@@ -13,5 +13,13 @@ namespace ShoppingCart.UnitTests
             var nonDiscountedPricer = new NonDiscountedPricer(30);
             nonDiscountedPricer.TotalPrice(0).Should().Be(0);
         }
+
+        [Test]
+        public void When_OneItems_Purchased_TotalPrice_Should_Be_Price()
+        {
+            var nonDiscountedPricer = new NonDiscountedPricer(30);
+            nonDiscountedPricer.TotalPrice(1).Should().Be(30);
+        }
+
     }
 }
