@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IItemCostCalculator.cs" />
+    <Compile Include="ItemCostCalculator.cs" />
     <Compile Include="TotalCostCalculator.cs" />
     <Compile Include="ItemCounter\IItemCounter.cs" />
     <Compile Include="ItemCounter\ItemCount.cs" />
