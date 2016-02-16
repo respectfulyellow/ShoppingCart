@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using ShoppingCart.Pricers;
 
-namespace ShoppingCart.UnitTests
+namespace ShoppingCart.UnitTests.PricerTests
 {
     [TestFixture]
     class DiscountedItemPricerTests
