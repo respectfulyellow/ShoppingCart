@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace ShoppingCart.UnitTests
 {
@@ -33,6 +34,22 @@ namespace ShoppingCart.UnitTests
 
             itemCounter.Values.Should().HaveCount(1);
             itemCounter.Values.Should().Contain(new ItemCount('A', 2));
+        }
+
+        [Test]
+        public void WhenAddTwoDifferentItem_Values_Should_Contain_BothSkusWithCountOfOne()
+        {
+            var itemCounter = new ItemCounter();
+
+            itemCounter.AddItems("AB");
+
+            var expectedResults = new List<ItemCount>
+            {
+                new ItemCount('A', 1),
+                new ItemCount('B', 1)
+            };
+
+            itemCounter.Values.Should().BeEquivalentTo(expectedResults);
         }
 
     }
