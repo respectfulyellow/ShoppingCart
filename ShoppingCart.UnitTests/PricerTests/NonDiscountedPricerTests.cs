@@ -14,7 +14,7 @@ namespace ShoppingCart.UnitTests.PricerTests
         [Test]
         public void When_Zero_Items_Purchased_TotalPrice_Should_Be_0()
         {
-            var nonDiscountedPricer = CreateNonDiscountedPricer();;
+            var nonDiscountedPricer = CreateNonDiscountedPricer();
             nonDiscountedPricer.TotalPrice(0).Should().Be(0);
         }
 

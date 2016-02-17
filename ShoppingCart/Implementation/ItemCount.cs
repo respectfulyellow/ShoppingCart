@@ -11,8 +11,7 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((ItemCount) obj);
+            return obj.GetType() == GetType() && Equals((ItemCount) obj);
         }
 
         public override int GetHashCode()
@@ -24,7 +23,7 @@
         }
 
         public char Sku { get; }
-        public int Count { get; set; }
+        public int Count { get; }
 
         public ItemCount(char sku, int count)
         {

@@ -15,8 +15,18 @@
         }
 
         public int TotalPrice(int quantityPurchased) =>
-            _discountPrice*(quantityPurchased/_quantityDiscount)
-            + (quantityPurchased%_quantityDiscount)*_priceForOne;
+            DiscountedTotal(quantityPurchased)
+            + NonDiscountedTotal(quantityPurchased);
+
+        private int NonDiscountedTotal(int quantityPurchased)
+        {
+            return quantityPurchased%_quantityDiscount*_priceForOne;
+        }
+
+        private int DiscountedTotal(int quantityPurchased)
+        {
+            return _discountPrice*(quantityPurchased/_quantityDiscount);
+        }
 
         public char Sku { get; }
     }
